@@ -19,7 +19,6 @@ import java.util.Iterator;
 
 public class MyImageListView extends ListActivity {
     public static final String ELEMENTS_LIST_KEY = "ELEMENTS_LIST";
-    public static int lookCounter = 0;
     ArrayAdapter<ElementInfo> adapter = null;
     ArrayAdapter<HashMap<String, Object>> adapterOld = null;
     ArrayList<ElementInfo> values = null;
@@ -28,19 +27,19 @@ public class MyImageListView extends ListActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        setupAdapter();
+        //setupAdapter();
         getActionBar().setDisplayShowTitleEnabled(false);
         //setupAdapterOld();
-
-        // Start the service to pull new images
-        Intent pullIntent = new Intent(this, ImagePullService.class);
-        pullIntent.putExtra(ELEMENTS_LIST_KEY, values);
-        startService(pullIntent);
 
         // Register a receiver for when the pulling is done
         PullResponseReceiver pullResponseReveiver = new PullResponseReceiver();
         IntentFilter intentFilter = new IntentFilter(ImagePullServiceOld.BROADCAST_PULL_DONE);
         LocalBroadcastManager.getInstance(this).registerReceiver(pullResponseReveiver, intentFilter);
+
+        // Start the service to pull new images
+        Intent pullIntent = new Intent(this, ImagePullService.class);
+        pullIntent.putExtra(ELEMENTS_LIST_KEY, values);
+        startService(pullIntent);
     }
 
     private void setupAdapter(){

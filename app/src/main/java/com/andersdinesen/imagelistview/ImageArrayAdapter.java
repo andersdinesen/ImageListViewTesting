@@ -33,7 +33,7 @@ public class ImageArrayAdapter extends ArrayAdapter<ElementInfo> {
         TextView textView = (TextView) rowView.findViewById(R.id.label);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.image);
 
-        textView.setText(values.get(position).getDisplayName() + ": " + (MyImageListView.lookCounter++) + " Bitmap " + (values.get(position).getBitmap() != null ? "not null " : "null"));
+        textView.setText(values.get(position).getDisplayName());
         if(values.get(position).getBitmap() != null){
             imageView.setImageBitmap(values.get(position).getBitmap());
         }
