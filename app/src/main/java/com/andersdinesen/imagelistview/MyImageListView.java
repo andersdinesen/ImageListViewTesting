@@ -27,7 +27,7 @@ public class MyImageListView extends ListActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        //setupAdapter();
+        setupAdapter();
         getActionBar().setDisplayShowTitleEnabled(false);
         //setupAdapterOld();
 
