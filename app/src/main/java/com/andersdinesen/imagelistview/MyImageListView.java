@@ -33,7 +33,7 @@ public class MyImageListView extends ListActivity {
 
         // Register a receiver for when the pulling is done
         PullResponseReceiver pullResponseReveiver = new PullResponseReceiver();
-        IntentFilter intentFilter = new IntentFilter(ImagePullServiceOld.BROADCAST_PULL_DONE);
+        IntentFilter intentFilter = new IntentFilter(ImagePullService.BROADCAST_PULL_DONE);
         LocalBroadcastManager.getInstance(this).registerReceiver(pullResponseReveiver, intentFilter);
 
         // Start the service to pull new images
@@ -88,7 +88,7 @@ public class MyImageListView extends ListActivity {
                 elementInfo = elementInfoIterator.next();
                 values.add(elementInfo);
             }
-            MyImageListView.this.adapter.notifyDataSetChanged();
+            //MyImageListView.this.adapter.notifyDataSetChanged();
             //values.clear();
             /*
             HashMap<String, Object> element = new HashMap<String, Object>();
